@@ -1,7 +1,7 @@
 /*
 ToDo
 -- add content validation
--- add login endpoint
+-- add login endpoint which validates creden
 -- divide the file into packages
 -- implement user authentication
 -- implement likes
@@ -24,6 +24,8 @@ import (
 )
 
 var db *sql.DB
+
+// var secretKey = []byte(os.Getenv("JWT_SECRET"))
 
 type post struct {
 	ID         int    `json:"id,omitempty"`
@@ -179,6 +181,21 @@ func getPostsByUser(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, posts)
 }
+
+// func getAuthToken(username int) (string, error) {
+// 	token := jwt.NewWithClaims(jwt.SigningMethodHS256,
+// 		jwt.MapClaims{
+// 			"username": username,
+// 			"exp":      time.Now().Add(time.Hour * 24).Unix(),
+// 		})
+
+// 	tokenString, err := token.SignedString(secretKey)
+// 	if err != nil {
+// 		return "", err
+// 	}
+
+// 	return tokenString, nil
+// }
 
 func main() {
 	err := godotenv.Load()
