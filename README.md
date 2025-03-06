@@ -8,32 +8,6 @@ This is my first project in Go. I went over the language in 4-5 hours (YouTube, 
 The API allows for basic blog post management, including creating, reading, updating, and deleting posts. It also supports fetching posts by user ID. While functional, the current implementation lacks proper security measures, content validation, and user authentication. Improvements(listed below) could not be implemented partly due to lack of knowledge and mostly due to time constraints.
 
 (p.s I could not install Docker as Docker does not support my computer so please do manual installation !)
-## To be Done
-
-- [ ] **Add content validation**  
-  Ensure that the `title` and `content` fields in posts are properly validated before being inserted into the database. For example:
-  - Parameters should not be empty or exceed a certain character limit.
-  - Content should have a minimum length and be checked for invalid inputs (e.g., SQL injection, special characters).
-
-- [ ] **Add login endpoint which validates credentials**  
-  Implement a `/login` endpoint that accepts a username and password, validates the credentials against the database, and returns a token (JWT) for authenticated access.
-
-- [ ] **Divide the file into packages**  
-  Split the `main.go` file into smaller, more manageable packages. For example:
-  - `routes`
-  - `controllers`
-  - `utils`
-
-- [ ] **Implement user authentication**  
-  Add middleware to protect certain endpoints (e.g., creating, updating, or deleting posts).
-
-- [ ] **Implement likes functionality**  
-  Add a feature to allow users to "like" posts.
-  - Adding endpoints to like/unlike a post.
-
-- [ ] **Performance improvements**  
-  - Implementing caching for frequently accessed data like posts, post likes or user sessions.
-
 
 ## Table of Contents
 - [Overview](#overview)
@@ -42,6 +16,7 @@ The API allows for basic blog post management, including creating, reading, upda
 - [Setup](#setup)
 - [API Endpoints](#api-endpoints)
 - [Example Use Cases](#example-use-cases)
+- [To Be Done](#to-be-done)
 
 ## Overview
 This project provides a basic API for creating, reading, updating, and deleting (CRUD) posts. It uses Gin as the web framework and MySQL for database operations.
@@ -153,3 +128,32 @@ curl -X PUT -H "Content-Type: application/json" -d '{"title": "Updated Post Titl
 ```bash
 curl -X DELETE http://localhost:8080/posts/1
 ```
+## To be Done
+
+- [ ] **Add content validation**  
+  Ensure that the `title` and `content` fields in posts are properly validated before being inserted into the database. For example:
+  - Parameters should not be empty or exceed a certain character limit.
+  - Content should have a minimum length and be checked for invalid inputs (e.g., SQL injection, special characters).
+
+- [ ] **Add login endpoint which validates credentials**  
+  Implement a `/login` endpoint that accepts a username and password, validates the credentials against the database, and returns a token (JWT) for authenticated access.
+
+- [ ] **Divide the file into packages**  
+  Split the `main.go` file into smaller, more manageable packages. For example:
+  - `routes`
+  - `controllers`
+  - `utils`
+
+- [ ] **Implement user authentication**  
+  Add middleware to protect certain endpoints (e.g., creating, updating, or deleting posts).
+
+- [ ] **Implement and Deply using Docker**  
+  Deploy using docker with all dependencies and requiremnts in one file.
+
+- [ ] **Implement likes functionality**  
+  Add a feature to allow users to "like" posts.
+  - Adding endpoints to like/unlike a post.
+
+- [ ] **Performance improvements**  
+  - Implementing caching for frequently accessed data like posts, post likes or user sessions.
+
